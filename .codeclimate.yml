@@ -6,19 +6,10 @@ engines:
     enabled: true
     config:
       languages:
-      - ruby
-      - javascript
-      - python
-      - php
+        javascript:
+          mass_threshold: 100
   eslint:
-    enabled: true
-    checks:
-      global-require:
-        enabled: false
-      comma-dangle:
-        enabled: false
-      semi:
-        enabled: false
+    enabled: false
   fixme:
     enabled: true
 ratings:
@@ -33,3 +24,4 @@ ratings:
   - "**.rb"
 exclude_paths:
 - lib/
+- example/example.js
