@@ -1,0 +1,88 @@
+{
+  "name": "rethinkdb-changefeed-reconnect",
+  "version": "0.1.0",
+  "description": "automatically reconnect changefeed processors when connection is lost",
+  "main": "lib",
+  "scripts": {
+    "build:library": "./node_modules/.bin/babel -d lib/ src/ --ignore __tests__",
+    "build:example": "./node_modules/.bin/babel example/example.babel.js > example/example.js",
+    "build": "npm run build:library && npm run build:example",
+    "prepublish": "npm test && npm run build",
+    "2npm": "./node_modules/.bin/publish",
+    "lint": "./node_modules/.bin/xo",
+    "test:cov": "npm run test:cov:run && npm run test:cov:send",
+    "test:cov:run": "./node_modules/.bin/nyc --reporter=lcov npm run test:run",
+    "test:cov:send": "./node_modules/.bin/codeclimate-test-reporter < ./coverage/lcov.info",
+    "test:run": "NODE_ENV=test ./node_modules/.bin/babel-tape-runner '**/__tests__/*.test.js' | ./node_modules/.bin/faucet",
+    "test": "npm run lint && npm run test:run"
+  },
+  "keywords": [
+    "rethinkdb",
+    "rethinkdbdash",
+    "changefeed",
+    "connection"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LearnersGuild/rethinkdb-changefeed-reconnect.git"
+  },
+  "author": {
+    "name": "Jeffrey Wescott",
+    "email": "jeffrey@learnersguild.org"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "rethinkdb": "^2.3.3",
+    "rethinkdbdash": "^2.3.25"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "babel-runtime": "^6.18.0",
+    "babel-tape-runner": "^2.0.1",
+    "blue-tape": "^1.0.0",
+    "codeclimate-test-reporter": "^0.4.0",
+    "faucet": "0.0.1",
+    "nyc": "^8.4.0",
+    "publish": "^0.6.0",
+    "tape": "^4.6.2",
+    "xo": "^0.17.0"
+  },
+  "engines": {
+    "node": "5.6.x",
+    "npm": "3.7.x"
+  },
+  "xo": {
+    "ignore": [
+      "lib/**",
+      "example/example.js"
+    ],
+    "rules": {
+      "comma-dangle": [
+        0
+      ],
+      "no-negated-condition": [
+        0
+      ],
+      "quotes": [
+        2,
+        "single",
+        "avoid-escape"
+      ],
+      "xo/filename-case": [
+        0
+      ]
+    },
+    "esnext": true,
+    "space": true,
+    "semicolon": false
+  },
+  "nyc": {
+    "sourceMap": false,
+    "instrument": false
+  }
+}
