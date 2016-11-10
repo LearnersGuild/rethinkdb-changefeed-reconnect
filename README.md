@@ -1,8 +1,8 @@
 # rethinkdb-changefeed-reconnect
 
-[![Code Climate GPA]()
-[![Code Climate Issue Count]()
-[![Test Coverage]()
+[![Code Climate GPA](https://codeclimate.com/repos/5823d2241b55812ced001bd5/badges/8e58e132c041cee51b64/gpa.svg)](https://codeclimate.com/repos/5823d2241b55812ced001bd5/feed)
+[![Code Climate Issue Count](https://codeclimate.com/repos/5823d2241b55812ced001bd5/badges/8e58e132c041cee51b64/issue_count.svg)](https://codeclimate.com/repos/5823d2241b55812ced001bd5/feed)
+[![Test Coverage](https://codeclimate.com/repos/5823d2241b55812ced001bd5/badges/8e58e132c041cee51b64/coverage.svg)](https://codeclimate.com/repos/5823d2241b55812ced001bd5/coverage)
 
 Simple helper module for having [RethinkDB][rethinkdb] changefeed listeners automatically reconnect if they lose their connection (i.e., if the database server goes down or restarts).
 
