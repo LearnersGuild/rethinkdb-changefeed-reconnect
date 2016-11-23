@@ -1,0 +1,17 @@
+{
+  "name": "example-rethinkdb-changefeed-reconnect",
+  "version": "1.0.0",
+  "description": "Example of using rethinkdb-changefeed-reconnect",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "author": "Jeffrey Wescott <jeffrey@learnersguild.org>",
+  "dependencies": {
+    "rethinkdb": "^2.3.3",
+    "rethinkdb-changefeed-reconnect": "^0.3.0",
+    "rethinkdbdash": "^2.3.27"
+  },
+  "license": "ISC"
+}
