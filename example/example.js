@@ -4,12 +4,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _promise = require('babel-runtime/core-js/promise');
+
+var _promise2 = _interopRequireDefault(_promise);
+
+var _regenerator = require('babel-runtime/regenerator');
+
+var _regenerator2 = _interopRequireDefault(_regenerator);
+
+var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+
+var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
+
 // -- helpers for this example
 
 var _cleanupOldTestDatabases = function () {
-  var _ref3 = _asyncToGenerator(regeneratorRuntime.mark(function _callee2() {
+  var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
     var dbList, drops;
-    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+    return _regenerator2.default.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
@@ -24,7 +36,7 @@ var _cleanupOldTestDatabases = function () {
               return r.dbDrop(dbName);
             });
             _context2.next = 6;
-            return Promise.all(drops);
+            return _promise2.default.all(drops);
 
           case 6:
           case 'end':
@@ -40,8 +52,8 @@ var _cleanupOldTestDatabases = function () {
 }();
 
 var _createTestDatabaseAndTable = function () {
-  var _ref4 = _asyncToGenerator(regeneratorRuntime.mark(function _callee3() {
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+  var _ref4 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3() {
+    return _regenerator2.default.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
@@ -75,17 +87,15 @@ var _lib2 = _interopRequireDefault(_lib);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } /* eslint-disable no-console, camelcase */
-
-
+/* eslint-disable no-console, camelcase */
 var TMP_DB_NAME_PREFIX = '_changefeedReconnectTest_';
 var tmpDbName = '' + TMP_DB_NAME_PREFIX + Date.now();
 var tableName = 'changefeedItems';
 var r = (0, _rethinkdbdash2.default)({ servers: { host: 'localhost', port: 28015 }, silent: true });
 
 exports.default = function () {
-  var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
-    return regeneratorRuntime.wrap(function _callee$(_context) {
+  var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+    return _regenerator2.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
