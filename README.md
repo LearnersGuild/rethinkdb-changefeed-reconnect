@@ -63,7 +63,7 @@ function handleError(err) {
 }
 ```
 
-See also [the provided example](/example/index.babel.js).
+See also [the provided example](/example/example.babel.js).
 
 You can run it like so: `node example`
 
