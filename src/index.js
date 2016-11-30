@@ -80,5 +80,12 @@ function _defaultOptions() {
 }
 
 function _isConnectionError(err) {
-  return (err instanceof ReqlServerError) || (err instanceof ReqlDriverError)
+  // FIXME: I'm not terribly happy about this particular logic, but
+  // unfortunately, rethinkdbdash doesn't provide a consistent error type (or
+  // even message) when it's having trouble connecting to a changefeed,
+  // particularly if it is connecting via a rethinkdb proxy server.
+  return (err instanceof ReqlServerError) ||
+    (err instanceof ReqlDriverError) ||
+    (err.msg && err.msg.match(/Changefeed\saborted/)) ||
+    (err.msg && err.msg.match(/primary\sreplica.*not\savailable/))
 }

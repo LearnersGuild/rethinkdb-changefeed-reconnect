@@ -65,6 +65,14 @@ var _createTestDatabaseAndTable = function () {
             return r.db(tmpDbName).tableCreate(tableName);
 
           case 4:
+            _context3.next = 6;
+            return r.db(tmpDbName).table(tableName).indexCreate('updatedAt');
+
+          case 6:
+            _context3.next = 8;
+            return r.db(tmpDbName).table(tableName).indexWait();
+
+          case 8:
           case 'end':
             return _context3.stop();
         }
@@ -91,7 +99,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var TMP_DB_NAME_PREFIX = '_changefeedReconnectTest_';
 var tmpDbName = '' + TMP_DB_NAME_PREFIX + Date.now();
 var tableName = 'changefeedItems';
-var r = (0, _rethinkdbdash2.default)({ servers: { host: 'localhost', port: 28015 }, silent: true });
+var r = (0, _rethinkdbdash2.default)({ servers: [{ host: 'localhost', port: 28015 }], silent: true });
 
 exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
@@ -113,7 +121,7 @@ exports.default = function () {
             (0, _lib2.default)(getFeed, handleFeedItem, handleError, {
               changefeedName: tmpDbName + '-' + tableName + ' feed',
               attemptDelay: 3000,
-              maxAttempts: 3,
+              maxAttempts: 30,
               silent: false
             });
             _context.next = 11;
@@ -141,7 +149,7 @@ exports.default = function () {
 }();
 
 function getFeed() {
-  return r.db(tmpDbName).table(tableName).changes().filter(r.row('old_val').eq(null));
+  return r.db(tmpDbName).table(tableName).orderBy({ index: r.desc('updatedAt') }).limit(3).changes().filter(r.row('old_val').eq(null));
 }
 
 function handleFeedItem(_ref2) {
