@@ -1,6 +1,6 @@
 {
   "name": "rethinkdb-changefeed-reconnect",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "automatically reconnect changefeed processors when connection is lost",
   "main": "lib",
   "scripts": {
