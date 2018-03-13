@@ -87,5 +87,6 @@ function _isConnectionError(err) {
   return (err instanceof ReqlServerError) ||
     (err instanceof ReqlDriverError) ||
     (err.msg && err.msg.match(/Changefeed\saborted/)) ||
-    (err.msg && err.msg.match(/primary\sreplica.*not\savailable/))
+    (err.msg && err.msg.match(/primary\sreplica.*not\savailable/)) ||
+    (err.msg && err.msg.match(/connection\swas\sclosed/))
 }
